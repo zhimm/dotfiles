@@ -53,13 +53,14 @@ vim.opt.termguicolors = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+--vim.opt.wrap = true
 
 vim.opt.updatetime = 50
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -246,6 +247,21 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
+
+--file explorer for pogging :Ex
+{
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    require("nvim-tree").setup {}
+  end,
+},
+
+
 }, {})
 
 -- [[ Setting options ]]
